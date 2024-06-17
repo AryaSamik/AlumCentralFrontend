@@ -11,7 +11,7 @@ const AlumniCards = () => {
     useEffect(() => {
         const fetchAlumni = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/alumni/all'); // Adjust the URL based on your backend setup
+                const response = await axios.get('https://alumcentralbackend-1.onrender.com/alumni/all'); // Adjust the URL based on your backend setup
                 setAlumni(response.data);
                 setFilteredAlumni(response.data);
             } catch (error) {

@@ -14,7 +14,7 @@ function Dashboard() {
 
     const fetchAlumni = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/alumni/all");
+            const response = await axios.get("https://alumcentralbackend-1.onrender.com/alumni/all");
             const alumniData = response.data;
             setAlumni(alumniData);
 
@@ -30,7 +30,7 @@ function Dashboard() {
 
     const fetchAdmin = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/admin/all");
+            const response = await axios.get("https://alumcentralbackend-1.onrender.com/admin/all");
             const adminData = response.data;
             setAdmin(adminData);
 

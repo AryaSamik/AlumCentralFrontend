@@ -35,7 +35,7 @@ function Login() {
     setIsSubmitting(true);
     console.log(inputdata);
     try {
-        const response = await fetch('http://localhost:3000/admin/login', {
+        const response = await fetch('https://alumcentralbackend-1.onrender.com/admin/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ function Login() {
             localStorage.setItem('token', result.token);
 
             // Call verify-token API to ensure token validity
-            const verifyResponse = await fetch('http://localhost:3000/admin/verify-token', {
+            const verifyResponse = await fetch('https://alumcentralbackend-1.onrender.com/admin/verify-token', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${result.token}`

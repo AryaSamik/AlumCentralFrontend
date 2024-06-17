@@ -45,7 +45,7 @@ function StudentRegister() {
         formDataToSend.append('message', message);
 
         try {
-            const response = await fetch('http://localhost:3000/alumni/register', {
+            const response = await fetch('https://alumcentralbackend-1.onrender.com/alumni/register', {
                 method: 'POST',
                 body: formDataToSend
             });

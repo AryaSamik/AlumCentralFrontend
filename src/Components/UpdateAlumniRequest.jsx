@@ -7,7 +7,7 @@ function UpdateAlumniRequest() {
     useEffect(() => {
         const fetchAlumni = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/alumni/all");
+                const response = await axios.get("https://alumcentralbackend-1.onrender.com/alumni/all");
                 const unUpdatedAlumni = response.data.filter(alumnus => !alumnus.verified);
                 setUnverifiedAlumni(unUpdatedAlumni);
             } catch (error) {
@@ -19,7 +19,7 @@ function UpdateAlumniRequest() {
 
     const handleSave = async (alumnusId) => {
         try {
-            await axios.post(`http://localhost:3000/alumni/verify/${alumnusId}`);
+            await axios.post(`https://alumcentralbackend-1.onrender.com/alumni/verify/${alumnusId}`);
             setUnverifiedAlumni(prevAlumni => 
                 prevAlumni.filter(alumnus => alumnus._id !== alumnusId)
             );
@@ -30,7 +30,7 @@ function UpdateAlumniRequest() {
 
     const handleDelete = async (alumnusId) => {
         try {
-            await axios.delete(`http://localhost:3000/alumni/delete/${alumnusId}`);
+            await axios.delete(`https://alumcentralbackend-1.onrender.com/alumni/delete/${alumnusId}`);
             setUnverifiedAlumni(prevAlumni => 
                 prevAlumni.filter(alumnus => alumnus._id !== alumnusId)
             );

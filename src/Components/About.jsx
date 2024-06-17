@@ -145,7 +145,7 @@ function About() {
                             </div>
                             <div className="w-full lg:w-1/3 px-4 mb-8">
                                 <div className="relative h-80">
-                                    <div className="absolute inset-0 bg-slate-200 opacity-0 p-1 hover:opacity-75 transition duration-300 ease-in-out flex justify-center items-center overflow-auto p-4">
+                                    <div className="absolute inset-0 bg-slate-200 opacity-0  hover:opacity-75 transition duration-300 ease-in-out flex justify-center items-center overflow-auto p-4">
                                         <div className="text-center text-black">
                                             <h3 className="text-lg font-bold mb-2">Partnerships</h3>
                                             <p>BIT Mesra has developed extensive partnerships with various national and international organizations to provide students with the best opportunities in research and development.</p>

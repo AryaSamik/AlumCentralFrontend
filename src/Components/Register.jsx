@@ -36,7 +36,7 @@ function AdminRegister() {
             formData.append('password', inputData.password);
             formData.append('image', inputData.image); // Append image file
             
-            const response = await fetch('http://localhost:3000/admin/register', {
+            const response = await fetch('https://alumcentralbackend-1.onrender.com/admin/register', {
                 method: 'POST',
                 body: formData
             });

@@ -7,7 +7,7 @@ function UpdateAdminRequest() {
     useEffect(() => {
         const fetchAdmins = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/admin/all");
+                const response = await axios.get("https://alumcentralbackend-1.onrender.com/admin/all");
                 const unUpdatedAdmins = response.data.filter(admin => !admin.verified);
                 setUnverifiedAdmin(unUpdatedAdmins);
             } catch (error) {
@@ -19,7 +19,7 @@ function UpdateAdminRequest() {
 
     const handleSave = async (adminId) => {
         try {
-            await axios.post(`http://localhost:3000/admin/verify/${adminId}`);
+            await axios.post(`https://alumcentralbackend-1.onrender.com/admin/verify/${adminId}`);
             setUnverifiedAdmin(prevAdmins => 
                 prevAdmins.filter(admin => admin._id !== adminId)
             );
@@ -30,7 +30,7 @@ function UpdateAdminRequest() {
 
     const handleDelete = async (adminId) => {
         try {
-            await axios.delete(`http://localhost:3000/admin/delete/${adminId}`);
+            await axios.delete(`https://alumcentralbackend-1.onrender.com/admin/delete/${adminId}`);
             setUnverifiedAdmin(prevAdmins => 
                 prevAdmins.filter(admin => admin._id !== adminId)
             );
