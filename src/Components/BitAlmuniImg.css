@@ -1,0 +1,49 @@
+
+ #content-container1 {
+ display: flex;
+  justify-content: center;
+  position: relative;
+
+}
+
+#university-image{
+  width:100vw;
+  height: 60vh;
+  transition: opacity 1s  ease-in-out;
+  overflow:cover;
+}
+#other-image{
+  width:100vw;
+  height: 60vh;
+  transition: opacity 4s ease-in-out;
+  overflow:cover;
+}
+
+#university-name  h3, #university-name h2{
+  margin: 0;
+  padding:0;
+}
+#other-discription{
+  position:absolute;
+  top:30%;
+  left:30%;
+  z-index:2;
+  background-color: black;
+  color: white;
+  font-size: larger;
+  padding: 10px;
+  border-radius:8px 0 8px 0;
+  width:20vw;
+box-sizing: content-box;
+}
+
+#alumCentralLogo {
+  position: absolute;
+  top:7%;
+  left:5%;
+
+}
+#alumCentralLogo img{
+  width: 20vw;
+  height: 20vh;
+}
