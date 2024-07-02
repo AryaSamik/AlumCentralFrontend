@@ -16,8 +16,8 @@ function Home() {
 
     
     <div className="button_list mt-3">
-        <button className='bg-blue-300 p-7 text-xl font-bold rounded-xl  text-black'><Link to="/StudentList">AlumiList</Link></button>
-        <button className='bg-blue-300 p-7 text-xl  rounded-xl font-bold text-black'><Link to='/StudentRegister'>Click Here to Create Your Profile</Link></button>
+        <button className='bg-blue-300 p-7  font-bold rounded-xl  text-black'><Link to="/StudentList">AlumniList</Link></button>
+        <button className='bg-blue-300 p-7   rounded-xl font-bold text-black'><Link to='/StudentRegister'>Click Here to Create Your Profile</Link></button>
       </div>
       <CustomSlider/>
       <Foot/>
