@@ -6,7 +6,6 @@ const AlumniCards = () => {
   const dispatch = useDispatch();
   const alumni = useSelector((state) => state.alumni.alumni);
   const alumniStatus = useSelector((state) => state.alumni.status);
-  const error = useSelector((state) => state.alumni.error);
 
   const [filteredAlumni, setFilteredAlumni] = useState([]);
   const [searchName, setSearchName] = useState('');
@@ -21,7 +20,8 @@ const AlumniCards = () => {
   }, [alumniStatus, dispatch]);
 
   useEffect(() => {
-    const filtered = alumni.filter((person) => {
+    const verifiedAlumni = alumni.filter((alumnus) => alumnus.verified);
+    const filtered = verifiedAlumni.filter((person) => {
       return (
         (searchName === '' || person.name.toLowerCase().includes(searchName.toLowerCase())) &&
         (searchGraduationYear === '' || person.graduationYear === parseInt(searchGraduationYear)) &&
@@ -66,7 +66,6 @@ const AlumniCards = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 border-black lg:grid-cols-3 gap-6">
         {alumniStatus === 'loading' && <p>Loading...</p>}
-        {alumniStatus === 'failed' && <p>{error}</p>}
         {alumniStatus === 'succeeded' &&
           filteredAlumni.map((person, index) => (
             <div

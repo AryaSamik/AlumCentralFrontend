@@ -7,6 +7,7 @@ export const fetchAlumni = createAsyncThunk(
   async () => {
     const response = await axios.get('https://alumcentralbackend-1.onrender.com/alumni/all');
     return response.data;
+
   }
 );
 

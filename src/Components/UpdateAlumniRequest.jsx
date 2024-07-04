@@ -1,47 +1,32 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUnverifiedAlumni, verifyAlumnus, deleteAlumnus } from '../features/updateAlumni/UpdateAlumniSlice'
 
 function UpdateAlumniRequest() {
-    const [unverifiedAlumni, setUnverifiedAlumni] = useState([]);
+    const dispatch = useDispatch();
+    const unverifiedAlumni = useSelector((state) => state.updatealumni.unverifiedAlumni);
+    const status = useSelector((state) => state.updatealumni.status);
+    const error = useSelector((state) => state.updatealumni.error);
 
     useEffect(() => {
-        const fetchAlumni = async () => {
-            try {
-                const response = await axios.get("https://alumcentralbackend-1.onrender.com/alumni/all");
-                const unUpdatedAlumni = response.data.filter(alumnus => !alumnus.verified);
-                setUnverifiedAlumni(unUpdatedAlumni);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchAlumni();
-    }, []); // Empty dependency array ensures this runs only once on mount
-
-    const handleSave = async (alumnusId) => {
-        try {
-            await axios.post(`https://alumcentralbackend-1.onrender.com/alumni/verify/${alumnusId}`);
-            setUnverifiedAlumni(prevAlumni => 
-                prevAlumni.filter(alumnus => alumnus._id !== alumnusId)
-            );
-        } catch (error) {
-            console.log(error);
+        if (status === 'idle') {
+            dispatch(fetchUnverifiedAlumni());
         }
+    }, [status, dispatch]);
+
+    const handleSave = (alumnusId) => {
+        dispatch(verifyAlumnus(alumnusId));
     };
 
-    const handleDelete = async (alumnusId) => {
-        try {
-            await axios.delete(`https://alumcentralbackend-1.onrender.com/alumni/delete/${alumnusId}`);
-            setUnverifiedAlumni(prevAlumni => 
-                prevAlumni.filter(alumnus => alumnus._id !== alumnusId)
-            );
-        } catch (error) {
-            console.log(error);
-        }
+    const handleDelete = (alumnusId) => {
+        dispatch(deleteAlumnus(alumnusId));
     };
 
     return (
         <div className="container mx-auto p-4">
             <h2 className="text-2xl mb-4">Requests</h2>
+            {status === 'loading' && <p>Loading...</p>}
+            {status === 'failed' && <p className="text-red-500">{error}</p>}
             {unverifiedAlumni.length === 0 ? (
                 <p className="text-lg text-gray-600">No pending requests.</p>
             ) : (

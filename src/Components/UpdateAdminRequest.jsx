@@ -1,47 +1,34 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+// src/components/UpdateAdminRequest.jsx
+
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUnverifiedAdmins, verifyAdmin, deleteAdmin } from '../features/updateAdmin/updateAdminSlice';
 
 function UpdateAdminRequest() {
-    const [unverifiedAdmin, setUnverifiedAdmin] = useState([]);
+    const dispatch = useDispatch();
+    const unverifiedAdmin = useSelector((state) => state.updateadmin.unverifiedAdmin);
+    const adminStatus = useSelector((state) => state.updateadmin.status);
+    const error = useSelector((state) => state.updateadmin.error);
 
     useEffect(() => {
-        const fetchAdmins = async () => {
-            try {
-                const response = await axios.get("https://alumcentralbackend-1.onrender.com/admin/all");
-                const unUpdatedAdmins = response.data.filter(admin => !admin.verified);
-                setUnverifiedAdmin(unUpdatedAdmins);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchAdmins();
-    }, []); // Empty dependency array ensures this runs only once on mount
-
-    const handleSave = async (adminId) => {
-        try {
-            await axios.post(`https://alumcentralbackend-1.onrender.com/admin/verify/${adminId}`);
-            setUnverifiedAdmin(prevAdmins => 
-                prevAdmins.filter(admin => admin._id !== adminId)
-            );
-        } catch (error) {
-            console.log(error);
+        if (adminStatus === 'idle') {
+            dispatch(fetchUnverifiedAdmins());
         }
+    }, [adminStatus, dispatch]);
+
+    const handleSave = (adminId) => {
+        dispatch(verifyAdmin(adminId));
     };
 
-    const handleDelete = async (adminId) => {
-        try {
-            await axios.delete(`https://alumcentralbackend-1.onrender.com/admin/delete/${adminId}`);
-            setUnverifiedAdmin(prevAdmins => 
-                prevAdmins.filter(admin => admin._id !== adminId)
-            );
-        } catch (error) {
-            console.log(error);
-        }
+    const handleDelete = (adminId) => {
+        dispatch(deleteAdmin(adminId));
     };
 
     return (
         <div className="container mx-auto p-4">
             <h2 className="text-2xl mb-4">Admin Requests</h2>
+            {adminStatus === 'loading' && <p>Loading...</p>}
+            {adminStatus === 'failed' && <p className="text-red-500">{error}</p>}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {unverifiedAdmin.length === 0 ? (
                     <p className="text-lg text-gray-600">No pending admin requests.</p>
