@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import LogoName from '../images/Birla_Institute_of_Technology_Mesra.png';
 
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
+import LogoName from '../images/Birla_Institute_of_Technology_Mesra.png';
+import useLogout from '../hooks/useLogout';
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { authUser} = useAuthContext();
+  const navigate = useNavigate();
+  const { logout } = useLogout();
+  const handleLogout =  () => {
+   logout();
+    navigate('/');
+  };
 
   return (
     <>
@@ -34,9 +43,25 @@ function Navbar() {
           <div className="flex flex-col md:flex-row md:gap-4">
             <Link to="/" className="block md:inline-block p-2">Home</Link>
             <Link to="/About" className="block md:inline-block p-2">About</Link>
-            <Link to="/Admin_form" className="block md:inline-block p-2">
-              <button className="bg-white text-purple-700 px-4 py-2 rounded">Admin Login</button>
-            </Link>
+            {authUser ? (
+              <>
+                <Link to="/messages" className="block md:inline-block p-2">Messages</Link>
+                <button onClick={handleLogout} className="bg-white text-purple-700 px-4 py-2 rounded">Logout</button>
+                <div className="flex items-center gap-2">
+                  <img src={authUser.user.image} alt="user" className="w-8 h-8 rounded-full" />
+                  <span>{authUser.user.name}</span>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link to="/AlumniLogin" className="block md:inline-block p-2">
+                  <button className="bg-white text-purple-700 px-4 py-2 rounded">User Login</button>
+                </Link>
+                <Link to="/Admin_form" className="block md:inline-block p-2">
+                  <button className="bg-white text-purple-700 px-4 py-2 rounded">Admin Login</button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>
@@ -44,9 +69,25 @@ function Navbar() {
         <div className="bg-purple-700 text-white w-full flex flex-col items-center md:hidden">
           <Link to="/" className="block p-2">Home</Link>
           <Link to="/About" className="block p-2">About</Link>
-          <Link to="/Admin_form" className="block p-2">
-            <button className="bg-white text-purple-700 px-4 py-2 rounded">Admin Login</button>
-          </Link>
+          {authUser ? (
+            <>
+              <Link to="/messages" className="block p-2">Messages</Link>
+              <button onClick={handleLogout} className="bg-white text-purple-700 px-4 py-2 rounded">Logout</button>
+              <div className="flex items-center gap-2">
+                <img src={authUser.user.image} alt="user" className="w-8 h-8 rounded-full" />
+                <span>{authUser.user.name}</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <Link to="/AlumniLogin" className="block p-2">
+                <button className="bg-white text-purple-700 px-4 py-2 rounded">User Login</button>
+              </Link>
+              <Link to="/Admin_form" className="block p-2">
+                <button className="bg-white text-purple-700 px-4 py-2 rounded">Admin Login</button>
+              </Link>
+            </>
+          )}
         </div>
       )}
     </>

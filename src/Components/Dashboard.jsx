@@ -98,6 +98,11 @@ const Dashboard = () => {
                 ))}
             </tbody>
           </table>
+           <div className="flex items-end my-5">
+     <Link to="/StudentList">
+        <button className='border-black bg-yellow-400 text-xl text-black rounded p-5 '>See all alumni</button>
+               </Link>
+</div>
         </div>
       </main>
       <Foot />

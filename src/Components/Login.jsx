@@ -45,7 +45,7 @@ function Login() {
 
         const result = await response.json();
         if (response.ok) {
-
+                
             // Token received successfully
             alert('Login successful!');
             localStorage.setItem('token', result.token);
