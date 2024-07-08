@@ -9,7 +9,7 @@ const useLogout = () => {
 	const logout = async () => {
 		setLoading(true);
 		try {
-			const res = await fetch("https://alumcentralbackend-1.onrender.com/alumni/login", {
+			const res = await fetch("https://alumcentralbackend-1.onrender.com/alumni/logout", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 			});
@@ -19,6 +19,7 @@ const useLogout = () => {
 			}
 
 			localStorage.removeItem("chat-user");
+			document.cookie = "jwt"+"=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
 			setAuthUser(null);
 		} catch (error) {
 			toast.error(error.message);

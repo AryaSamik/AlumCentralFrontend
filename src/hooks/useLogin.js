@@ -10,20 +10,23 @@ const useLogin = () => {
   const login = async (email, password) => {
     const success = handleInputErrors(email, password);
     if (!success) return;
-
+    
     setLoading(true);
     try {
       const res = await axios.post("https://alumcentralbackend-1.onrender.com/alumni/login", {
         email,
         password,
       });
-
       const data = res.data;
       if (data.error) {
         throw new Error(data.error);
       }
 
       localStorage.setItem("chat-user", JSON.stringify(data));
+      const date = new Date();
+      date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000));
+      let expires = "; expires=" + date.toUTCString();
+      document.cookie = "jwt" + "=" + (data.token || "")  + expires + "; path=/";
       setAuthUser(data);
     } catch (error) {
       toast.error(error.message);

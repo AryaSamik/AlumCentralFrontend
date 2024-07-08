@@ -10,7 +10,7 @@ const useGetConversations = () => {
         const getConversations = async () => {
             setLoading(true);
             try {
-                const response = await axios.get("https://alumcentralbackend-1.onrender.com/users/conversations", { withCredentials: true });
+                const response = await axios.get("https://alumcentralbackend-1.onrender.com/users/conversations", {withCredentials:true});
                 const data = response.data;
                 setConversations(data);
                 console.log("Conversations fetched:", data);
