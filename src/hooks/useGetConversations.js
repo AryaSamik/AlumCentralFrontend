@@ -5,12 +5,14 @@ import toast from "react-hot-toast";
 const useGetConversations = () => {
     const [loading, setLoading] = useState(false);
     const [conversations, setConversations] = useState([]);
-
     useEffect(() => {
         const getConversations = async () => {
             setLoading(true);
             try {
-                const response = await axios.get("https://localhost:3000/users/conversations", {withCredentials:true});
+                axios.defaults.withCredentials = true;
+                console.log("calling");
+                const response = await axios.get("https://alumcentralbackend-1.onrender.com/users/conversations");
+                console.log(response);
                 const data = response.data;
                 setConversations(data);
                 console.log("Conversations fetched:", data);
@@ -18,6 +20,7 @@ const useGetConversations = () => {
                 console.error("Error fetching conversations:", error.response?.data || error.message);
                 toast.error(error.response?.data?.message || error.message);
             } finally {
+                console.log("called");
                 setLoading(false);
             }
         };
