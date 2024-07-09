@@ -5,7 +5,7 @@ import { useAuthContext } from "../context/AuthContext";
 
 const useLogin = () => {
   const [loading, setLoading] = useState(false);
-  const { setAuthUser } = useAuthContext();
+  const { setAuthUser,authUser } = useAuthContext();
 
   const login = async (email, password) => {
     const success = handleInputErrors(email, password);
@@ -23,11 +23,14 @@ const useLogin = () => {
       }
 
       localStorage.setItem("chat-user", JSON.stringify(data));
+      const d=localStorage.getItem("chat-user");
+      console.log(d);
       const date = new Date();
       date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000));
       let expires = "; expires=" + date.toUTCString();
       document.cookie = "jwt" + "=" + (data.token || "")  + expires + "; path=/";
       setAuthUser(data);
+      console.log(authUser);
     } catch (error) {
       toast.error(error.message);
     } finally {

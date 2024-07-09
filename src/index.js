@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from "../src/context/AuthContext";
-// import { SocketContextProvider } from "../src/context/SocketContext";
+import { SocketContextProvider } from "../src/context/SocketContext";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,9 +14,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
     <AuthContextProvider>
-    {/* <SocketContextProvider> */}
+    <SocketContextProvider>
 					<App />
-				{/* </SocketContextProvider> */}
+				</SocketContextProvider>
 			</AuthContextProvider>
     </Provider>
   </React.StrictMode>

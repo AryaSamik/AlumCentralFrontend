@@ -1,29 +1,23 @@
+import React from "react";
 import MessageContainer from "../Components/messages/MessageContainer";
 import Sidebar from "../Components/sidebar/Sidebar";
-import React from "react";
+import './Message.css';
 
 const Message = () => {
     return (
+        <div  className="h-screen" style={{
+            background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bg.png')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        }}>
         <div
-            className='flex h-screen rounded '
-            style={{
-				borderColor:"black",
-                 border:"100px",
-                background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bg.png')",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
+            className='flex  sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'
+           
         >
-            {/* Sidebar */}
-            <div className="w-1/4 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-                <Sidebar />
-            </div>
-
-            {/* Message Container */}
-            <div className=" flex items-start justify-center w-3/4 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-                <MessageContainer />
-            </div>
+            <Sidebar />
+            <MessageContainer /> 
+        </div>
         </div>
     );
 };
