@@ -24,13 +24,12 @@ const useLogin = () => {
 
       localStorage.setItem("chat-user", JSON.stringify(data));
       const d=localStorage.getItem("chat-user");
-      console.log(d);
       const date = new Date();
       date.setTime(date.getTime() + (10 * 24 * 60 * 60 * 1000));
       let expires = "; expires=" + date.toUTCString();
       document.cookie = "jwt" + "=" + (data.token || "")  + expires + "; path=/";
       setAuthUser(data);
-      console.log(authUser);
+      console.log(d);
     } catch (error) {
       toast.error(error.message);
     } finally {
