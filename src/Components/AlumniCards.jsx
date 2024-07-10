@@ -87,7 +87,7 @@ const AlumniCards = () => {
                 style={{ maxHeight: '500px' }} 
                 loading='lazy'
               />
-              <div className="p-4">
+              <div className="p-4 relative">
                 <h5 className="text-xl font-bold">{person.name}</h5>
                 {person.designation && person.company && (
                   <>
@@ -117,7 +117,12 @@ const AlumniCards = () => {
                   </>
                 )}
                 <p className="text-gray-600">{person.message}</p>
+               
               </div>
+              <div className=' flex justify-center absolute bottom-0.5 right-0.5   '>
+                <button className='bg-blue-500 text-white rounded-xl flex justify-center pb-1'>connect</button>
+
+                </div>
             </div>
           ))}
       </div>
