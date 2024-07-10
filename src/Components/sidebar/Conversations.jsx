@@ -8,7 +8,7 @@ const Conversations = () => {
 	const dispatch=useDispatch();
 	const { loading, conversations } = useSelector(state => state.conversations);
 	useEffect(()=>{
-		if(!conversations)
+		if(conversations.length===0)
 	  dispatch(GetConversations());
 	}
 	,[dispatch])
