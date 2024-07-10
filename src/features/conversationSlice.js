@@ -1,6 +1,5 @@
-// conversationsSlice.js
 import { createSlice } from '@reduxjs/toolkit';
-import  GetConversations  from '../hooks/useGetConversations';
+import GetConversations from '../hooks/useGetConversations';
 
 const conversationsSlice = createSlice({
     name: 'conversations',
@@ -9,7 +8,11 @@ const conversationsSlice = createSlice({
         conversations: [],
         error: null,
     },
-    reducers: {},
+    reducers: {
+        addConversation: (state, action) => {
+            state.conversations.push(action.payload);
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(GetConversations.pending, (state) => {
@@ -28,4 +31,5 @@ const conversationsSlice = createSlice({
     },
 });
 
+export const { addConversation } = conversationsSlice.actions;
 export default conversationsSlice.reducer;

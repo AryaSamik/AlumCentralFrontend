@@ -3,7 +3,7 @@ import { extractTime } from "../../utils/extractTime";
 import useConversation from "../../zustand/useConversation";
 
 const Message = ({ message }) => {
-    console.log("Message:", message); // Ensure message is being received
+ // Ensure message is being received
 
     const { authUser } = useAuthContext();
     const { selectedConversation } = useConversation();

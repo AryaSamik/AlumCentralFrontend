@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAlumni } from '../features/alumni/alumniSlice';
+import AlumConnectionButton from './button';
 
 const getTransformedImageUrl = (url) => {
   const cloudinaryBaseUrl = "https://res.cloudinary.com/dsq1uhh6a/image/upload";
@@ -10,6 +11,7 @@ const getTransformedImageUrl = (url) => {
   const parts = url.split("/upload/");
   return `${cloudinaryBaseUrl}/${transformations}/${parts[1]}`;
 };
+
 const AlumniCards = () => {
   const dispatch = useDispatch();
   const alumni = useSelector((state) => state.alumni.alumni);
@@ -117,12 +119,10 @@ const AlumniCards = () => {
                   </>
                 )}
                 <p className="text-gray-600">{person.message}</p>
-               
               </div>
               <div className=' flex justify-center absolute bottom-0.5 right-0.5   '>
-                <button className='bg-blue-500 text-white rounded-xl flex justify-center pb-1'>connect</button>
-
-                </div>
+                <AlumConnectionButton person={person}/>
+              </div>
             </div>
           ))}
       </div>
