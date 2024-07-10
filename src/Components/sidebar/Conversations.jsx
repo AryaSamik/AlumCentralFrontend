@@ -1,9 +1,17 @@
-import useGetConversations from "../../hooks/useGetConversations";
+import { useEffect } from "react";
+import GetConversations from "../../hooks/useGetConversations";
 import { getRandomEmoji } from "../../utils/emojis";
 import Conversation from "./Conversation";
+import {  useDispatch, useSelector } from 'react-redux';
 
 const Conversations = () => {
-	const { loading, conversations } = useGetConversations();
+	const dispatch=useDispatch();
+	const { loading, conversations } = useSelector(state => state.conversations);
+	useEffect(()=>{
+	  dispatch(GetConversations());
+	}
+	,[dispatch])
+	console.log(conversations)
 	return (
 		<div className='py-2 flex flex-col overflow-auto'>
 			{conversations.map((conversation, idx) => (
