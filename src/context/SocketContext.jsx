@@ -2,7 +2,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 import { useAuthContext } from "./AuthContext";
 import io from "socket.io-client";
 
-const SocketContext = createContext();
+export const SocketContext = createContext();
 
 export const useSocketContext = () => {
     return useContext(SocketContext);
@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (authUser && authUser._id) {
-            const socket = io("http://localhost:3000", {
+            const socket = io("https://alumcentralbackend-1.onrender.com", {
                 query: {
                     userId: authUser._id,
                 },
