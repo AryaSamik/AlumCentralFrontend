@@ -47,7 +47,7 @@ function Navbar() {
             <Link to="/About" className="block md:inline-block p-2">About</Link>
             {(authUser || authAdmin) ? (
               <>
-                {(authAdmin)?(<></>):(<Link to="/messages" className="block md:inline-block p-2">Messages</Link>)}
+                {(authAdmin)?(<Link to='/Dashboard' className="block p-2">Dashboard</Link>):(<Link to="/messages" className="block md:inline-block p-2">Messages</Link>)}
                 <button onClick={handleLogout} className="bg-white text-purple-700 px-4 py-2 rounded">Logout</button>
                 <div className="flex items-center gap-2">
                   <img src={authUser ? authUser.user.image : (authAdmin ? authAdmin.image : "")} alt="user" className="w-8 h-8 rounded-full" />
@@ -73,9 +73,9 @@ function Navbar() {
           <Link to="/About" className="block p-2">About</Link>
           {(authUser || authAdmin) ? (
             <>
-            {(authAdmin)?(<></>):(<Link to="/messages" className="block md:inline-block p-2">Messages</Link>)}
+            {(authAdmin)?(<Link to='/Dashboard' className="block p-2">Dashboard</Link>):(<Link to="/messages" className="block md:inline-block p-2">Messages</Link>)}
               <button onClick={handleLogout} className="bg-white text-purple-700 px-4 py-2 rounded">Logout</button>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 p-2">
                 <img src={authUser ? authUser.user.image : (authAdmin ? authAdmin.image : "")} alt="user" className="w-8 h-8 rounded-full" />
                 <span>{authUser ? authUser.user.name : (authAdmin ? authAdmin.name+" (Admin)" : "")}</span>
               </div>
