@@ -22,7 +22,6 @@ const useLogin = () => {
         password,
       });
       const data = res.data;
-      console.log(data);
       if (data.error) {
         throw new Error(data.error);
       }
@@ -33,8 +32,7 @@ const useLogin = () => {
       setAuthUser(data);
       alert(data.message)
     } catch (error) {
-      alert(error.message);
-      // toast.error(error.message);
+      alert(error.response.data.message);
     } finally {
 
       setLoading(false);
