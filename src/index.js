@@ -7,17 +7,20 @@ import store from './store';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from "../src/context/AuthContext";
 import { SocketContextProvider } from "../src/context/SocketContext";
+import { AuthAdminContextProvider } from './context/AuthAdminContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <AuthAdminContextProvider>
     <AuthContextProvider>
     <SocketContextProvider>
 					<App />
 				</SocketContextProvider>
 			</AuthContextProvider>
+      </AuthAdminContextProvider>
     </Provider>
   </React.StrictMode>
 );

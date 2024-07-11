@@ -8,7 +8,7 @@ export const useAuthAdminContext = () => {
 };
 
 export const AuthAdminContextProvider = ({ children }) => {
-	const [authUser, setAuthAdminUser] = useState(JSON.parse(localStorage.getItem("chat-user")) || null);
+	const [authAdmin, setAuthAdmin] = useState(JSON.parse(localStorage.getItem("admin")) || null);
 
-	return <AuthAdminContext.Provider value={{ authUser, setAuthUser }}>{children}</AuthAdminContext.Provider>;
+	return <AuthAdminContext.Provider value={{ authAdmin, setAuthAdmin }}>{children}</AuthAdminContext.Provider>;
 };

@@ -6,6 +6,8 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import Foot from "./Foot";
+import axios from "axios";
+import { useAuthAdminContext } from "../context/AuthAdminContext";
 
 function Login() {
 
@@ -13,6 +15,9 @@ function Login() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [passwordType, setPasswordType] = useState("password");
+
+  const { setAuthAdmin } = useAuthAdminContext();
+
   const [inputdata, setInputData] = useState({
     email:'',
     password:'',
@@ -35,43 +40,13 @@ function Login() {
     setIsSubmitting(true);
     console.log(inputdata);
     try {
-        const response = await fetch('https://alumcentralbackend-1.onrender.com/admin/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(inputdata) // Assuming inputdata is defined
-        });
-
-        const result = await response.json();
-        if (response.ok) {
-                
-            // Token received successfully
-            alert('Login successful!');
-            localStorage.setItem('token', result.token);
-
-            // Call verify-token API to ensure token validity
-            const verifyResponse = await fetch('https://alumcentralbackend-1.onrender.com/admin/verify-token', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${result.token}`
-                }
-            });
-
-            const verifyResult = await verifyResponse.json();
-            if (verifyResponse.ok) {
-                // Token is valid, redirect to protected page
-                navigate('/Dashboard');
-            } else {
-                // Token is invalid or expired
-                setIsSubmitting(false);
-                alert(`Token verification failed: ${verifyResult.message}`);
-            }
-        } else {
-            // Error in login
-            setIsSubmitting(false);
-            alert(`Error: ${result.message}`);
-        }
+      axios.defaults.withCredentials = true;
+      const response = await axios.post('https://alumcentralbackend-1.onrender.com/admin/login', inputdata);
+      localStorage.setItem('admin', JSON.stringify(response.data.admin));
+      setAuthAdmin(response.data.admin);
+      alert('Login successful!');
+      setIsSubmitting(false);
+      navigate('/Dashboard');
     } catch (error) {
       setIsSubmitting(false);
         console.error('Error:', error);

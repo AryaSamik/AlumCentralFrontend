@@ -13,25 +13,29 @@ import UpdateAlumniRequest from './Components/UpdateAlumniRequest';
 import UpdateAdminRequest from './Components/UpdateAdminRequest';
 import About from './Components/About';
 import { useAuthContext } from "./context/AuthContext";
+import { useAuthAdminContext } from './context/AuthAdminContext';
+import NotFound from './Components/NotFound';
 
 function App() {
   const { authUser } = useAuthContext();
+  const { authAdmin } = useAuthAdminContext();
   return (
     <>
     <Router>
         <Routes>
         <Route path='/AlumniLogin' element={authUser ? <Navigate to='/' /> : <AlumniLogin />} />
-        <Route path='/messages' element={ <Message/>} />
+        <Route path='/messages' element={authUser ? <Message/> : <Navigate to='/AlumniLogin' /> } />
         <Route exact path='/' element={<Home/>}/>
-         <Route exact path='/Admin_form' element={<Login/>}/>
+         <Route exact path='/Admin_form' element={authAdmin ? <Navigate to='/' /> : <Login/>}/>
          {/* <Route exact path='/AlumniLogin' element={<AlumniLogin/>}/> */}
-         <Route exact path='/AdminRegister' element={<AdminRegister/>}/>  
-         <Route path='/StudentRegister' element={<StudentRegister/>}/>
+         <Route exact path='/AdminRegister' element={authUser ? <Navigate to='/'/> : <AdminRegister/>}/>  
+         <Route path='/StudentRegister' element={authUser ? <Navigate to='/'/> : <StudentRegister/>}/>
          <Route path='/StudentList' element={<AlumniList/>}/>
-         <Route path='/Dashboard' element={<Dashboard/>}/>
-         <Route path='/updateAlumniRequest' element={<UpdateAlumniRequest/>}/>
-         <Route path='/updateAdminRequest' element={<UpdateAdminRequest/>}/>
+         <Route path='/Dashboard' element={authAdmin ? <Dashboard/> : <Navigate to='/' />}/>
+         <Route path='/updateAlumniRequest' element={ authAdmin ? <UpdateAlumniRequest/> : <Navigate to='/'/> }/>
+         <Route path='/updateAdminRequest' element={ authAdmin ? <UpdateAdminRequest/> : <Navigate to='/'/> }/>
          <Route path='/About' element={<About/>}/>
+         <Route path='*' element={<NotFound/>}/>
         </Routes>
         </Router>
     </>
