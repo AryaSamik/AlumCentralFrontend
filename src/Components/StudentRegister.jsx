@@ -78,13 +78,22 @@ function StudentRegister() {
     return (
         <>
             <Navbar />
-            <main className="flex flex-col items-center bg-gray-100 py-10">
+            <div
+        className="min-h-screen flex flex-col items-center justify-center"
+        style={{
+          background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bit_right_pov.jpeg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+            <main className="flex flex-col items-center py-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10" style={{height:'100vh', overflowY:'auto'}}>
                 <div className="w-3/4 flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-lg">
                     <div>
-                        <h1 className="text-2xl font-bold text-center py-3 underline text-blue-500">Registration Form</h1>
+                        <h1 className="text-2xl font-bold text-center py-3 text-gray-500">Registration Form</h1>
                     </div>
-                    <form onSubmit={handleSubmit} className="w-full max-w-lg">
-                        <h2 className="text-xl font-semibold mb-4">General Info</h2>
+                    <form onSubmit={handleSubmit} className="w-full max-w-lg shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30">
+                        <h2 className="text-xl text-black font-semibold mb-4">General Info</h2>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                                 Name
@@ -139,7 +148,7 @@ function StudentRegister() {
                     placeholder="Enter your password"
                 />
                 <span className="absolute pt-5 inset-y-0 right-0 pr-3 flex items-center">
-                    <button type="button" onClick={toggleEye} className="text-gray-400 hover:text-gray-700 focus:outline-none">
+                    <button type="button" onClick={toggleEye} className="text-gray-400 hover:text-gray-500 focus:outline-none">
                         {passwordType === "password" ? (
                             <AiFillEyeInvisible className="h-5 w-5" />
                         ) : (
@@ -204,7 +213,7 @@ function StudentRegister() {
                                 placeholder="Enter your year of graduation"
                             />
                         </div>
-                        <h2 className="text-xl font-semibold mb-4">Additional Info</h2>
+                        <h2 className="text-xl text-gray-800 font-semibold mb-4">Additional Info</h2>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tools">
                                 Tools Learned
@@ -265,13 +274,14 @@ function StudentRegister() {
                                 disabled={isSubmitting}
                                 type="submit"
                                 className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-                            >
+                                >
                                 {isSubmitting ? 'Submitting...' : 'Submit'}
                             </button>
                         </div>
                     </form>
                 </div>
             </main>
+        </div>
             <Foot />
         </>
     );

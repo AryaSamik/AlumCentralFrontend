@@ -14,6 +14,9 @@ const AlumConnectionButton = ({ person }) => {
         <button
             className='bg-blue-500 text-white rounded-xl flex justify-center pb-1'
             onClick={handleConnection} // Use the handler function
+            style={{
+                padding:'0.8rem'
+            }}
         >
             Connect
         </button>

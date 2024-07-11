@@ -4,20 +4,22 @@ import Navbar from './Navbar'
 import BitAlmuniImg from './BitAlmuniImg'
 import Foot from './Foot'
 import CustomSlider from './CustomSlider'
- import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useAuthContext } from '../context/AuthContext'
 function Home() {
+  const {authUser} = useAuthContext();
   return (
     <div className=' mx-auto'>
     <Navbar/>
     <BitAlmuniImg/>
-    <div className=" px-5 py-5 font-serif text-xl message text-center">
+    <div className=" px-5 py-5 font-serif text-xl message text-center" style={{color:'black'}}>
     "Welcome to AlumCentral, where past meets future. Here, our esteemed alumni share their journeys, insights, and expertise to guide you in your own path. Connect, learn, and grow with us as you build a brighter future, 
-    inspired by those who have been in your shoes. Your success story begins here."      </div>
+    inspired by those who have been in your shoes."      </div>
 
     
     <div className="button_list mt-3">
         <button className='bg-blue-300 p-7  font-bold rounded-xl  text-black'><Link to="/StudentList">AlumniList</Link></button>
-        <button className='bg-blue-300 p-7   rounded-xl font-bold text-black'><Link to='/StudentRegister'>Click Here to Create Your Profile</Link></button>
+        {(authUser) ? <></> : <button className='bg-blue-300 p-7   rounded-xl font-bold text-black'><Link to='/StudentRegister'>Click Here to Create Your Profile</Link></button>}
       </div>
       <CustomSlider/>
       <Foot/>

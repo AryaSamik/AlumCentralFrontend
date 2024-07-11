@@ -13,7 +13,7 @@ const SearchInput = () => {
 		e.preventDefault();
 		if (!search) return;
 		if (search.length < 3) {
-			return toast.error("Search term must be at least 3 characters long");
+			return alert("Search term must be at least 3 characters long");
 		}
 
 		const conversation = conversations.find((c) => c.fullName.toLowerCase().includes(search.toLowerCase()));
@@ -33,7 +33,7 @@ const SearchInput = () => {
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
 			/>
-			<button type='submit' className='btn btn-circle bg-sky-500 text-white md:w-10 md:h-10 sm:w-8 sm:h-8 flex justify-center items-center'>
+			<button type='submit' className='btn btn-circle text-white md:w-10 md:h-10 sm:w-8 sm:h-8 flex justify-center items-center'>
 				<IoSearchSharp className='md:w-6 md:h-6 sm:w-4 sm:h-4' />
 			</button>
 		</form>

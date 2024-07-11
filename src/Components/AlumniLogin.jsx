@@ -26,7 +26,7 @@ const AlumniLogin = () => {
       <div
         className="min-h-screen flex flex-col items-center justify-center"
         style={{
-          background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bg.png')",
+          background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bit_right_pov.jpeg')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -34,12 +34,12 @@ const AlumniLogin = () => {
       >
         <div className="w-full max-w-md p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30">
           <h1 className="text-3xl font-semibold text-center text-gray-300">
-            Login
+            User Login
           </h1>
           <form onSubmit={handleSubmit}>
             <div>
               <label className="block p-2">
-                <span className="text-base">Email</span>
+                <span className="text-base" style={{color: 'black'}}>Email</span>
               </label>
               <input
                 type="email"
@@ -52,7 +52,7 @@ const AlumniLogin = () => {
             </div>
             <div className="mb-4 relative">
             <label className="block p-2">
-              <span className="text-base">Password</span>
+              <span className="text-base" style={{color:'black'}}>Password</span>
             </label>
             <input
               type={passwordType}
@@ -76,13 +76,13 @@ const AlumniLogin = () => {
             </div>
             <Link
               to="/StudentRegister"
-              className="text-sm text-blue-600 hover:underline mt-2 inline-block"
+              className="text-sm text-gray-100 hover:underline mt-2 inline-block"
             >
               {"Don't"} have an account?
             </Link>
             <div>
               <button
-                className="w-full mt-4 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="w-full mt-4 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 disabled={loading}
               >
                 {loading ? <span className="loading loading-spinner"></span> : "Login"}

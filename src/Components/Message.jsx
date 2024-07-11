@@ -6,7 +6,7 @@ import './Message.css';
 const Message = () => {
     return ( 
         <div  className="h-screen flex  flex-wrap justify-center items-center" style={{
-            background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bg.png')`,
+            background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bit_right_pov.jpeg')`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             backgroundPosition: 'center',

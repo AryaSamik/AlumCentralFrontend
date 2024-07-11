@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import img from '../images/bg_pic1.jpg';
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
@@ -57,15 +56,21 @@ function Login() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col lg:grid lg:grid-cols-12">
-        <div className="lg:col-span-6 p-2 flex justify-center items-center bg-gray-100 h-auto lg:h-screen">
-          <div className="flex flex-col justify-center items-center w-full">
-            <img src={img} alt="img" className="w-full h-auto mb-4 lg:mb-0" />
-          </div>
-        </div>
-        <div className="lg:col-span-6 flex justify-center items-center mb-7 lg:mb-1 bg-gray-50">
-          <div className="login-form p-8 w-full max-w-md">
-            <h1 className="underline text-blue-500 mb-6 text-2xl text-center lg:text-left" id="admin">Login</h1>
+      <div  className="h-screen flex  flex-wrap justify-center items-center" style={{
+            background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bit_right_pov.jpeg')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        }}>
+      {/* <div className="flex flex-col lg:grid lg:grid-cols-12"> */}
+        {/* <div className="lg:col-span-6 p-2 flex justify-center items-center bg-gray-100 h-auto lg:h-screen"> */}
+          {/* <div className="flex flex-col justify-center items-center w-full"> */}
+            {/* <img src="/bit_right_pov.jpeg" alt="img" className="w-full h-auto mb-4 lg:mb-0" /> */}
+          {/* </div> */}
+        {/* </div> */}
+        <div className="lg:col-span-6 flex justify-center items-center mb-7 lg:mb-1">
+          <div className="login-form p-8 w-full max-w-md rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10">
+            <h1 className="text-3xl font-semibold text-center text-gray-300" id="admin">Admin Login</h1>
             <form onSubmit={handleSubmit}>
               <div className="input-box mb-4">
                 <label className="block text-gray-700 mb-2">Email Id</label>
@@ -90,7 +95,7 @@ function Login() {
                     placeholder="Enter Your Password"
                     className="w-full p-2"
                     required
-                  />
+                    />
                   <span className="p-2 cursor-pointer" onClick={toggleEye}>
                     {passwordType === "text" ? (
                       <AiFillEye color={"#a7a7a7"} size={"20px"} />
@@ -100,21 +105,24 @@ function Login() {
                   </span>
                 </div>
               </div>
+              <Link to='/AdminRegister' className="hover:underline" id='register'>Don't have an Admin account?</Link>
+              {/* <br/> */}
               <button
            disabled={isSubmitting}
           type="submit"
           className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
         >
            {isSubmitting ? 'Submitting...' : 'Submit'}
-        </button>            </form>
+        </button>
+            </form>
             <div>
-              <button className="w-full mt-3 py-1 text-center text-white bg-blue-500">
-                <Link to='/AdminRegister'>Register</Link>
-              </button>
+              {/* <button className="w-full mt-3 py-1 text-center text-white bg-blue-500"> */}
+              {/* </button> */}
             </div>
           </div>
         </div>
       </div>
+    {/* </div> */}
       <Foot />
     </>
   );
