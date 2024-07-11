@@ -122,7 +122,7 @@ const AlumniCards = () => {
                 )}
                 <p className="text-gray-600">{person.message}</p>
               </div>
-              <div className=' flex justify-center absolute bottom-0.5 right-0.5   ' style={{display: (authUser.user._id === person._id)?'none':'block'}}>
+              <div className=' flex justify-center absolute bottom-0.5 right-0.5   ' style={{display: ((authUser) && (authUser.user._id === person._id))?'none':'block'}}>
                 <AlumConnectionButton person={person}/>
               </div>
             </div>
