@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAlumni } from '../features/alumni/alumniSlice';
 import AlumConnectionButton from './button';
+import { useAuthContext } from '../context/AuthContext';
 
 const getTransformedImageUrl = (url) => {
   const cloudinaryBaseUrl = "https://res.cloudinary.com/dsq1uhh6a/image/upload";
@@ -16,6 +17,7 @@ const AlumniCards = () => {
   const dispatch = useDispatch();
   const alumni = useSelector((state) => state.alumni.alumni);
   const alumniStatus = useSelector((state) => state.alumni.status);
+  const {authUser} = useAuthContext();
 
   const [filteredAlumni, setFilteredAlumni] = useState([]);
   const [searchName, setSearchName] = useState('');
@@ -120,7 +122,7 @@ const AlumniCards = () => {
                 )}
                 <p className="text-gray-600">{person.message}</p>
               </div>
-              <div className=' flex justify-center absolute bottom-0.5 right-0.5   '>
+              <div className=' flex justify-center absolute bottom-0.5 right-0.5   ' style={{display: (authUser.user._id === person._id)?'none':'block'}}>
                 <AlumConnectionButton person={person}/>
               </div>
             </div>
