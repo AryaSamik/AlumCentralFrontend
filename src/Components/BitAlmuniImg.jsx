@@ -55,16 +55,16 @@ function BitAlmuniImg() {
         <img className='max-w-full h-auto' src={AlumCentralImg} alt="alum logo" />
     </div>
 
-    <div id="other-discription" className="relative animate__animated animate__fadeIn animate-delay-4.3s text-center text-white mt-4 max-w-md mx-auto px-4 lg:px-0 hidden lg:block">
+    {/* <div id="other-discription" className="relative animate__animated animate__fadeIn animate-delay-4.3s text-center text-white mt-4 max-w-md mx-auto px-4 lg:px-0 hidden lg:block">
     <p>
     "Learn from those who've walked the path before you. AlumCentral connects you with alumni who share their wisdom, experiences, and insights, helping you navigate your journey and build a brighter future. Embrace their knowledge, leverage their successes, 
     and let their lessons light your way to success."
     </p>
-</div>
+</div> */}
 
 
 
-    <img src={Bg_pc} alt="background" id="other-image" className="animate__animated animate__fadeIn animate-delay-4.3s max-w-full h-auto" />
+    <img src='bit_right_pov.jpeg' alt="background" id="other-image" className="animate__animated animate__fadeIn animate-delay-4.3s max-w-full h-auto" />
 </div>
 
       )}
