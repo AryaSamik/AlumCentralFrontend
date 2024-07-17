@@ -1,12 +1,8 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useAuthContext } from "./AuthContext";
 import io from "socket.io-client";
 
 export const SocketContext = createContext();
-
-export const useSocketContext = () => {
-    return useContext(SocketContext);
-};
 
 export const SocketContextProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
@@ -15,27 +11,27 @@ export const SocketContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (authUser && authUser._id) {
-            const socket = io("https://alumcentralbackend-1.onrender.com", {
-                query: {
-                    userId: authUser._id,
-                },
+            const newSocket = io("https://alumcentralbackend-1.onrender.com", {
+                query: { userId: authUser._id },
             });
 
-            setSocket(socket);
+            setSocket(newSocket);
 
-            // socket.on() is used to listen to the events. can be used both on client and server side
-            socket.on("getOnlineUsers", (users) => {
+            newSocket.on("getOnlineUsers", (users) => {
                 setOnlineUsers(users);
             });
 
-            return () => socket.close();
+            return () => {
+                newSocket.close();
+                setSocket(null);
+            };
         } else {
             if (socket) {
                 socket.close();
                 setSocket(null);
             }
         }
-    }, [authUser]);
+    }, [authUser, socket]);
 
     return (
         <SocketContext.Provider value={{ socket, onlineUsers }}>

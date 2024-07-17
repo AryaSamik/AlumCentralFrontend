@@ -3,15 +3,17 @@ import GetConversations from "../../hooks/useGetConversations";
 import { getRandomEmoji } from "../../utils/emojis";
 import Conversation from "./Conversation";
 import {  useDispatch, useSelector } from 'react-redux';
-
+import { useAuthContext } from "../../context/AuthContext";
 const Conversations = () => {
+	const { authUser } = useAuthContext();
+
 	const dispatch=useDispatch();
 	const { loading, conversations } = useSelector(state => state.conversations);
 	useEffect(()=>{
 		if(conversations.length===0)
 	  dispatch(GetConversations());
 	}
-	,[dispatch])
+	,[dispatch,authUser])
 	console.log(conversations)
 	return (
 		<div className='py-2 flex flex-col overflow-auto'>
