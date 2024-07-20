@@ -76,6 +76,9 @@ function UpdateAlumniRequest() {
                                         Delete
                                     </button>
                                 </div>
+                                <div>
+                                    {(alumnus.emailVerificationToken) ? "***Email Not Verified Yet ... Please wait before Saving or Delete on your discretion***" : ""}
+                                </div>
                             </div>
                         </div>
                     ))}

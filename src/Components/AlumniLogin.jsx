@@ -48,6 +48,7 @@ const AlumniLogin = () => {
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="mb-4 relative">
@@ -61,6 +62,7 @@ const AlumniLogin = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
             <span
               className="absolute right-3 top-3/4 transform -translate-y-1/2 p-2 cursor-pointer"
