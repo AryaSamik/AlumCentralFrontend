@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Foot from './Foot'
 import Navbar from "./Navbar";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import axios from "axios";
 
 
 function StudentRegister() {
@@ -36,13 +35,11 @@ function StudentRegister() {
     };
 
     const handleSubmit = async (e) => {
-        // axios.defaults.withCredentials = true;
         e.preventDefault();
         setIsSubmitting(true);
         const { name, image, email, password, branch, bitRollno, admissionYear, graduationYear, tools, company, designation, message } = formData;
 
         const formDataToSend = new FormData();
-
         formDataToSend.append('name', name);
         formDataToSend.append('image', image);
         formDataToSend.append('email', email);
@@ -68,15 +65,15 @@ function StudentRegister() {
                 throw new Error('Registration failed');
             }
             setIsSubmitting(false);
-            // const result = await response.json();
-            console.log('Registration successful:', response.data);
+            const result = await response.json();
+            console.log('Registration successful:', result);
             alert('Verification Email sent!');
             // You can redirect or perform any other action upon successful registration
         } catch (error) {
             setIsSubmitting(false);
             console.log(error);
             console.error('Registration error:', error.message);
-            (error.response && error.response.data && error.response.data.message) ? alert('Error: '+ error.response.data.message) : alert(error.message);
+            alert(error.message);
         }
     };
 
