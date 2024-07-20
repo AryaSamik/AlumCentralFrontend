@@ -56,7 +56,8 @@ function StudentRegister() {
         try {
             const response = await fetch('https://alumcentralbackend-1.onrender.com/alumni/register', {
                 method: 'POST',
-                body: formDataToSend
+                body: formDataToSend,
+                credentials: 'include'
             });
 
             if (!response.ok) {
@@ -66,12 +67,13 @@ function StudentRegister() {
             setIsSubmitting(false);
             const result = await response.json();
             console.log('Registration successful:', result);
-            alert('Registration successful!');
+            alert('Verification Email sent!');
             // You can redirect or perform any other action upon successful registration
         } catch (error) {
             setIsSubmitting(false);
+            console.log(error);
             console.error('Registration error:', error.message);
-            alert('Registration failed');
+            alert(error.message);
         }
     };
 
@@ -79,7 +81,7 @@ function StudentRegister() {
         <>
             <Navbar />
             <div
-        className="min-h-screen flex flex-col items-center justify-center"
+        className="min-h-screen  flex flex-col items-center justify-center"
         style={{
           background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bit_right_pov.jpeg')",
           backgroundRepeat: "no-repeat",
@@ -87,7 +89,7 @@ function StudentRegister() {
           backgroundPosition: "center",
         }}
       >
-            <main className="flex flex-col items-center py-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10" style={{height:'100vh', overflowY:'auto'}}>
+            <main className="flex flex-col  w-1/2 items-center py-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10" style={{height:'100vh', overflowY:'auto'}}>
                 <div className="w-3/4 flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-lg">
                     <div>
                         <h1 className="text-2xl font-bold text-center py-3 text-gray-500">Registration Form</h1>
@@ -106,6 +108,7 @@ function StudentRegister() {
                                 value={formData.name}
                                 onChange={handleChange}
                                 placeholder="Enter your name"
+                                required
                             />
                         </div>
                         <div className="mb-4">
@@ -118,6 +121,7 @@ function StudentRegister() {
                                 type="file"
                                 name="image"
                                 onChange={handleChange}
+                                required
                             />
                         </div>
                         <div className="mb-4">
@@ -132,6 +136,7 @@ function StudentRegister() {
                                 value={formData.email}
                                 onChange={handleChange}
                                 placeholder="Enter your email"
+                                required
                             />
                         </div>
                         <div className="mb-4 relative">
@@ -146,6 +151,7 @@ function StudentRegister() {
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="Enter your password"
+                    required
                 />
                 <span className="absolute pt-5 inset-y-0 right-0 pr-3 flex items-center">
                     <button type="button" onClick={toggleEye} className="text-gray-400 hover:text-gray-500 focus:outline-none">
@@ -169,6 +175,7 @@ function StudentRegister() {
                                 value={formData.branch}
                                 onChange={handleChange}
                                 placeholder="Enter your branch"
+                                required
                             />
                         </div>
                         <div className="mb-4">
@@ -183,6 +190,7 @@ function StudentRegister() {
                                 value={formData.bitRollno}
                                 onChange={handleChange}
                                 placeholder="Enter your BitRollno"
+                                required
                             />
                         </div>
                         <div className="mb-4">
@@ -197,6 +205,7 @@ function StudentRegister() {
                                 value={formData.admissionYear}
                                 onChange={handleChange}
                                 placeholder="Enter your year of admission"
+                                required
                             />
                         </div>
                         <div className="mb-4">
@@ -211,6 +220,7 @@ function StudentRegister() {
                                 value={formData.graduationYear}
                                 onChange={handleChange}
                                 placeholder="Enter your year of graduation"
+                                required
                             />
                         </div>
                         <h2 className="text-xl text-gray-800 font-semibold mb-4">Additional Info</h2>
