@@ -57,7 +57,7 @@ function StudentRegister() {
         formDataToSend.append('message', message);
 
         try {
-            const response = await axios.post('http://localhost:3000/alumni/register', formDataToSend, {
+            const response = await axios.post('https://alumcentralbackend-1.onrender.com/alumni/register', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
