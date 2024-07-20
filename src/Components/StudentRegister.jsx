@@ -39,24 +39,25 @@ function StudentRegister() {
         axios.defaults.withCredentials = true;
         e.preventDefault();
         setIsSubmitting(true);
-        // const { name, image, email, password, branch, bitRollno, admissionYear, graduationYear, tools, company, designation, message } = formData;
+        const { name, image, email, password, branch, bitRollno, admissionYear, graduationYear, tools, company, designation, message } = formData;
 
-        // const formDataToSend = new FormData();
-        // formDataToSend.append('name', name);
-        // formDataToSend.append('image', image);
-        // formDataToSend.append('email', email);
-        // formDataToSend.append('password', password);
-        // formDataToSend.append('branch', branch);
-        // formDataToSend.append('bitRollno', bitRollno);
-        // formDataToSend.append('admissionYear', admissionYear);
-        // formDataToSend.append('graduationYear', graduationYear);
-        // formDataToSend.append('tools', tools);
-        // formDataToSend.append('company', company);
-        // formDataToSend.append('designation', designation);
-        // formDataToSend.append('message', message);
+        const formDataToSend = new FormData();
+
+        formDataToSend.append('name', name);
+        formDataToSend.append('image', image);
+        formDataToSend.append('email', email);
+        formDataToSend.append('password', password);
+        formDataToSend.append('branch', branch);
+        formDataToSend.append('bitRollno', bitRollno);
+        formDataToSend.append('admissionYear', admissionYear);
+        formDataToSend.append('graduationYear', graduationYear);
+        formDataToSend.append('tools', tools);
+        formDataToSend.append('company', company);
+        formDataToSend.append('designation', designation);
+        formDataToSend.append('message', message);
 
         try {
-            const response = await axios.post('https://alumcentralbackend-1.onrender.com/alumni/register', formData, {
+            const response = await axios.post('http://localhost:3000/alumni/register', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
