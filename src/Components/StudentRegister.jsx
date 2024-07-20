@@ -36,7 +36,7 @@ function StudentRegister() {
     };
 
     const handleSubmit = async (e) => {
-        axios.defaults.withCredentials = true;
+        // axios.defaults.withCredentials = true;
         e.preventDefault();
         setIsSubmitting(true);
         const { name, image, email, password, branch, bitRollno, admissionYear, graduationYear, tools, company, designation, message } = formData;
@@ -57,10 +57,10 @@ function StudentRegister() {
         formDataToSend.append('message', message);
 
         try {
-            const response = await axios.post('https://alumcentralbackend-1.onrender.com/alumni/register', formDataToSend, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+            const response = await fetch('https://alumcentralbackend-1.onrender.com/alumni/register', {
+                method: 'POST',
+                body: formDataToSend,
+                credentials: 'include'
             });
 
             // if (!response.ok) {
