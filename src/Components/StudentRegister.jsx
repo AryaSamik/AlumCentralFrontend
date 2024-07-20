@@ -63,10 +63,10 @@ function StudentRegister() {
                 credentials: 'include'
             });
 
-            // if (!response.ok) {
-            //     setIsSubmitting(false);
-            //     throw new Error('Registration failed');
-            // }
+            if (!response.ok) {
+                setIsSubmitting(false);
+                throw new Error('Registration failed');
+            }
             setIsSubmitting(false);
             // const result = await response.json();
             console.log('Registration successful:', response.data);
