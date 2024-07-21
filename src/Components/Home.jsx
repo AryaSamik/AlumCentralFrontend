@@ -6,8 +6,10 @@ import Foot from './Foot'
 import CustomSlider from './CustomSlider'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
+import { useAuthAdminContext } from '../context/AuthAdminContext'
 function Home() {
   const {authUser} = useAuthContext();
+  const {authAdmin} = useAuthAdminContext();
   return (
     <div className=' mx-auto'>
     <Navbar/>
@@ -19,7 +21,7 @@ function Home() {
     
     <div className="button_list mt-3">
         <button className='bg-blue-300 p-7  font-bold rounded-xl  text-black'><Link to="/StudentList">AlumniList</Link></button>
-        {(authUser) ? <></> : <button className='bg-blue-300 p-7   rounded-xl font-bold text-black'><Link to='/StudentRegister'>Click Here to Create Your Profile</Link></button>}
+        {(authUser || authAdmin) ? <></> : <button className='bg-blue-300 p-7   rounded-xl font-bold text-black'><Link to='/StudentRegister'>Click Here to Create Your Profile</Link></button>}
       </div>
       <CustomSlider/>
       <Foot/>
