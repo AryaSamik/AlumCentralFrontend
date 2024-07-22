@@ -12,7 +12,7 @@ export const SocketContextProvider = ({ children }) => {
     useEffect(() => {
         let newSocket;
         if (authUser && authUser.user._id) {
-            newSocket = io("http://localhost:5000", {
+            newSocket = io("https://alumcentralbackend.onrender.com", {
                 query: { userId: authUser.user._id },
             });
 
