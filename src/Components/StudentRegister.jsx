@@ -59,7 +59,7 @@ function StudentRegister() {
                 body: formDataToSend,
                 credentials: 'include'
             });
-
+            console.log(response);
             if (!response.ok) {
                 setIsSubmitting(false);
                 throw new Error('Registration failed');
@@ -89,19 +89,19 @@ function StudentRegister() {
           backgroundPosition: "center",
         }}
       >
-            <main className="flex flex-col  w-1/2 items-center py-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10" style={{height:'100vh', overflowY:'auto'}}>
-                <div className="w-3/4 flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-lg">
+            <main className="flex flex-col items-center py-10 px-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10" style={{height:'100vh', overflowY:'auto'}}>
+                {/* <div className="w-3/4 flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-lg"> */}
                     <div>
-                        <h1 className="text-2xl font-bold text-center py-3 text-gray-500">Registration Form</h1>
+                        <h1 className="text-2xl font-bold text-center py-3 text-black">Registration Form</h1>
                     </div>
-                    <form onSubmit={handleSubmit} className="w-full max-w-lg shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30">
+                    <form onSubmit={handleSubmit} className="w-full max-w-lg py-10 px-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10 rounded-lg">
                         <h2 className="text-xl text-black font-semibold mb-4">General Info</h2>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="name">
                                 Name
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="name"
                                 type="text"
                                 name="name"
@@ -112,11 +112,11 @@ function StudentRegister() {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="image">
                                 Image
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="image"
                                 type="file"
                                 name="image"
@@ -125,11 +125,11 @@ function StudentRegister() {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="email">
                                 Email
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="email"
                                 type="email"
                                 name="email"
@@ -140,11 +140,11 @@ function StudentRegister() {
                             />
                         </div>
                         <div className="mb-4 relative">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+                <label className="block text-black text-sm font-bold mb-2" htmlFor="password">
                     Password
                 </label>
                 <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                     id="password"
                     type={passwordType}
                     name="password"
@@ -164,11 +164,11 @@ function StudentRegister() {
                 </span>
             </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="branch">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="branch">
                                 Branch
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="branch"
                                 type="text"
                                 name="branch"
@@ -179,11 +179,11 @@ function StudentRegister() {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="bitRollno">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="bitRollno">
                                 BitRollno
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="bitRollno"
                                 type="text"
                                 name="bitRollno"
@@ -194,11 +194,11 @@ function StudentRegister() {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="admissionYear">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="admissionYear">
                                 Year of Admission
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="admissionYear"
                                 type="number"
                                 name="admissionYear"
@@ -209,11 +209,11 @@ function StudentRegister() {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="graduationYear">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="graduationYear">
                                 Year of Graduation
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="graduationYear"
                                 type="number"
                                 name="graduationYear"
@@ -223,13 +223,13 @@ function StudentRegister() {
                                 required
                             />
                         </div>
-                        <h2 className="text-xl text-gray-800 font-semibold mb-4">Additional Info</h2>
+                        <h2 className="text-xl text-black font-semibold mb-4">Additional Info</h2>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tools">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="tools">
                                 Tools Learned
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="tools"
                                 type="text"
                                 name="tools"
@@ -239,11 +239,11 @@ function StudentRegister() {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="company">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="company">
                                 Company (if working)
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="company"
                                 type="text"
                                 name="company"
@@ -253,11 +253,11 @@ function StudentRegister() {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="designation">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="designation">
                                 Designation (if working)
                             </label>
                             <input
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="designation"
                                 type="text"
                                 name="designation"
@@ -267,11 +267,11 @@ function StudentRegister() {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+                            <label className="block text-black text-sm font-bold mb-2" htmlFor="message">
                                 Message
                             </label>
                             <textarea
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                                 id="message"
                                 name="message"
                                 value={formData.message}
@@ -289,7 +289,7 @@ function StudentRegister() {
                             </button>
                         </div>
                     </form>
-                </div>
+                {/* </div> */}
             </main>
         </div>
             <Foot />
