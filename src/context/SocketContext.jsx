@@ -10,9 +10,10 @@ export const SocketContextProvider = ({ children }) => {
     const { authUser } = useAuthContext();
 
     useEffect(() => {
-        if (authUser && authUser._id) {
-            const newSocket = io("https://alumcentralbackend-1.onrender.com", {
-                query: { userId: authUser._id },
+        let newSocket;
+        if (authUser && authUser.user._id) {
+            newSocket = io("http://localhost:5000", {
+                query: { userId: authUser.user._id },
             });
 
             setSocket(newSocket);
@@ -20,18 +21,15 @@ export const SocketContextProvider = ({ children }) => {
             newSocket.on("getOnlineUsers", (users) => {
                 setOnlineUsers(users);
             });
-
-            return () => {
-                newSocket.close();
-                setSocket(null);
-            };
-        } else {
-            if (socket) {
-                socket.close();
-                setSocket(null);
-            }
         }
-    }, [authUser, socket]);
+
+        return () => {
+            if (newSocket) {
+                newSocket.close();
+            }
+            setSocket(null);
+        };
+    }, [authUser]);
 
     return (
         <SocketContext.Provider value={{ socket, onlineUsers }}>
