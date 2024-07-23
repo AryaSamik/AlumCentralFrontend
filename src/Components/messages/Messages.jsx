@@ -77,8 +77,8 @@ const Messages = () => {
 
     useEffect(() => {
         if(newMessage){
-            messagesArray.push(newMessage);
-            setMessagesArray(messagesArray);
+            // messagesArray.push(newMessage);
+            setMessagesArray((prev) => [...prev, newMessage]);
             setNewMessage(null);
         }
         if (messagesEndRef.current) {
@@ -90,8 +90,8 @@ const Messages = () => {
         socket.on("getMessage", (message) => {
             console.log(message);
             if(authUser.user._id === message.receiverId){
-                messagesArray.push(message);
-                setMessagesArray(messagesArray);
+                // messagesArray.push(message);
+                setMessagesArray((prev) => [...prev, message]);
             }
         });
 
@@ -99,7 +99,7 @@ const Messages = () => {
             console.log("get");
             socket.off("getMessages");
         }
-    }, [socket]);
+    }, [socket, authUser.user._id]);
     //****** */
     return (
         <div className='px-4 flex-1 overflow-auto'>
