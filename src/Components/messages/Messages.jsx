@@ -97,7 +97,7 @@ const Messages = () => {
 
         return () => {
             console.log("get");
-            socket.off("getMessages");
+            socket.off("getMessage");
         }
     }, [socket, authUser.user._id]);
     //****** */
