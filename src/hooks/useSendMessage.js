@@ -3,11 +3,13 @@ import useConversation from "../zustand/useConversation";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useNewMsgContext } from "../context/NewMsgContext";
+import { useSocketContext } from "./useSocketContext";
 
 const useSendMessage = () => {
     const [loading, setLoading] = useState(false);
     const { messages, setMessages, selectedConversation } = useConversation();
     const {setNewMessage} = useNewMsgContext();
+    const {socket} = useSocketContext();
 
     const sendMessage = async (message) => {
         setLoading(true);
@@ -24,6 +26,7 @@ const useSendMessage = () => {
             messages.messages = [...messages.messages, data.newMessage];
             setMessages(messages);
             setNewMessage(data.newMessage);
+            socket.emit("sendMessage", {receiverId: data.newMessage.receiverId, message: data.newMessage.message});
             console.log("Sent");
         } catch (error) {
             console.log(error);            
