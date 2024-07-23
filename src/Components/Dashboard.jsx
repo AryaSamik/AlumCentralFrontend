@@ -9,8 +9,8 @@ import { HiArrowLeft } from 'react-icons/hi2';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { alumni, loading: alumniLoading, error: alumniError } = useSelector((state) => state.alumni);
-  const { admin, loading: adminLoading, error: adminError } = useSelector((state) => state.admin);
+  const { alumni  } = useSelector((state) => state.alumni);
+  const { admin } = useSelector((state) => state.admin);
 
   const verifiedAlumni = alumni.filter((alumnus) => alumnus.verified).length;
   const notVerifiedAlumni = alumni.length - verifiedAlumni;

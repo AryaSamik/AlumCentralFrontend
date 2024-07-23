@@ -2,7 +2,7 @@
 import React from 'react';
 import AlumniCards from './AlumniCards';
 import { HiArrowLeft } from "react-icons/hi2";
-import {Link, useNavigate} from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 
 const AlumniList = () => {
     const navigate = useNavigate();

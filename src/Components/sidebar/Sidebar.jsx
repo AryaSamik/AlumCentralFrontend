@@ -1,7 +1,7 @@
 import { HiArrowLeft } from "react-icons/hi2";
 import Conversations from "./Conversations";
 import SearchInput from "./SearchInput";
-import {Link, useNavigate} from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 
 const Sidebar = () => {
 	const navigate = useNavigate();
