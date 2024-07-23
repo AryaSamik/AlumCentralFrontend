@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAlumni } from '../features/alumni/alumniSlice';
 import { fetchAdmin } from '../features/admin/adminSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Foot from './Foot';
+import { HiArrowLeft } from 'react-icons/hi2';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -22,10 +23,16 @@ const Dashboard = () => {
     dispatch(fetchAdmin());
   }, [dispatch]);
 
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar />
       <main className="w-full">
+        <div>
+          <button onClick={() => {navigate(-1)}} className='relative float-left text-3xl top-1 left-5'><HiArrowLeft/></button>
+          <h1 className='text-3xl flex justify-center mt-5 mb-3'><span>Admin Dashboard</span></h1>
+        </div>
         <div className="edit pannel flex flex-col lg:flex-row gap-4 justify-center">
           <Link to="/updateAlumniRequest" className="w-full lg:w-[350px]">
             <div className="AlumniRequest bg-blue-200 p-4 m-5 text-center rounded-md">

@@ -46,7 +46,7 @@ const AlumniCards = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="mb-4">
+      <div className="mb-4 mt-20">
         <input
           type="text"
           placeholder="Search by name"
