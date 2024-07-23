@@ -1,5 +1,8 @@
 import React from 'react';
 import LogoName from '../images/Birla_Institute_of_Technology_Mesra.png';
+import { Link } from 'react-router-dom';
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+
 
 function Foot() {
     return (
@@ -37,7 +40,24 @@ function Foot() {
                 </div>
             </div>
             <div className="bg-blue-700 text-center py-4 mt-4">
-                <span>© 2024 by <div className="font-bold hover:text-gray-300">SiddharthTech</div>. All Rights Reserved.</span>
+                <span><div className="font-bold hover:text-gray-300">AlumCentral</div></span>
+                Developed By:
+                <div>
+                    <div className='flex flex-col items-center'>
+                        <span>Siddharth Kumar</span>
+                        <div className='flex'>
+                            <span className='mt-1 text-lg mx-1.5'><Link to="https://www.linkedin.com/in/siddharth-kumar-ba4191249/"><FaLinkedin /></Link></span>
+                            <span className='mt-1 text-lg mx-1.5'><Link to='https://github.com/siddharthkumarrrrr'><FaGithub /></Link></span>
+                        </div>
+                    </div>
+                    <div className='flex flex-col items-center'>
+                        <span>Arya Samik</span>
+                        <div className='flex'>
+                            <span className='mt-1 text-lg mx-1.5'><Link to="https://www.linkedin.com/in/aryasamik/"><FaLinkedin /></Link></span>
+                            <span className='mt-1 text-lg mx-1.5'><Link to='https://github.com/aryasamik'><FaGithub /></Link></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
