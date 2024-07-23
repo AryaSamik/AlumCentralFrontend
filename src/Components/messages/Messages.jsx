@@ -77,6 +77,9 @@ const Messages = () => {
             setMessagesArray(messagesArray);
             setNewMessage(null);
         }
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+        }
     }, [newMessage]);
 
     return (

@@ -12,7 +12,7 @@ const Message = () => {
             backgroundPosition: 'center',
         }}>
         <div
-            className='flex flex-1   mx-auto absolute  sm:h-screen  md:w-[1000px] md:h-[600px] rounded-lg overflow-hidden bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'
+            className='flex flex-1 h-full  mx-auto absolute  sm:h-screen  md:w-[1000px] md:h-[600px] rounded-lg overflow-hidden bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'
            
         >
             <Sidebar />
