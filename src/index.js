@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from "../src/context/AuthContext";
 import { SocketContextProvider } from "../src/context/SocketContext";
 import { AuthAdminContextProvider } from './context/AuthAdminContext';
-
+import { NewMsgContextProvider } from './context/NewMsgContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +17,9 @@ root.render(
       <AuthAdminContextProvider>
     <AuthContextProvider>
     <SocketContextProvider>
+      <NewMsgContextProvider>
 					<App />
+      </NewMsgContextProvider>
 				</SocketContextProvider>
 			</AuthContextProvider>
       </AuthAdminContextProvider>

@@ -46,12 +46,14 @@ import useGetMessages from "../../hooks/useGetMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
+import { useNewMsgContext } from "../../context/NewMsgContext";
 
 const Messages = () => {
     const { messages, loading } = useGetMessages();
     useListenMessages();
     const messagesEndRef = useRef(null);
     const [messagesArray, setMessagesArray] = useState([]);
+    const {newMessage, setNewMessage} = useNewMsgContext();
 
     // Update messagesArray whenever messages change
     useEffect(() => {
@@ -68,6 +70,14 @@ const Messages = () => {
             messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
         }
     }, [messagesArray]);
+
+    useEffect(() => {
+        if(newMessage){
+            messagesArray.push(newMessage);
+            setMessagesArray(messagesArray);
+            setNewMessage(null);
+        }
+    }, [newMessage]);
 
     return (
         <div className='px-4 flex-1 overflow-auto'>
