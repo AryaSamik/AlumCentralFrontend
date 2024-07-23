@@ -26,7 +26,7 @@ const useSendMessage = () => {
             messages.messages = [...messages.messages, data.newMessage];
             setMessages(messages);
             setNewMessage(data.newMessage);
-            socket.emit("sendMessage", {receiverId: data.newMessage.receiverId, message: data.newMessage.message});
+            socket.emit("sendMessage", data.newMessage);
             console.log("Sent");
         } catch (error) {
             console.log(error);            
