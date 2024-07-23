@@ -123,11 +123,20 @@ const AlumniCards = () => {
                 <p className="text-gray-600">{person.message}</p>
               </div>
               {
-                (authUser) ?
-                <div className=' flex justify-center absolute bottom-0.5 right-0.5   ' style={{display: ((authUser) && (authUser.user._id === person._id))?'none':'block'}}>
-                  <AlumConnectionButton person={person}/>
-                </div> : <></>
-              }
+  authUser ? (
+    authUser.user._id !== person._id ? (
+      <div className='flex justify-center absolute bottom-0.5 right-0.5'>
+        <AlumConnectionButton person={person} />
+      </div>
+    ) : null // Don't render anything if the logged-in user is viewing their own profile
+  ) : (
+    // Render the connect button for all profiles when no user is logged in
+    <div className='flex justify-center absolute bottom-0.5 right-0.5'>
+      <AlumConnectionButton person={person} />
+    </div>
+  )
+}
+
             </div>
           ))}
       </div>
