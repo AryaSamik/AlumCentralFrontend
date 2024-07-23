@@ -81,7 +81,7 @@ function StudentRegister() {
         <>
             <Navbar />
             <div
-        className="min-h-screen w-full flex flex-col items-center justify-center"
+        className=" w-full flex flex-col items-center justify-center"
         style={{
           background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bit_right_pov.jpeg')",
           backgroundRepeat: "no-repeat",
