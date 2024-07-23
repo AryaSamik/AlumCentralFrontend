@@ -47,6 +47,8 @@ import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
 import { useNewMsgContext } from "../../context/NewMsgContext";
+import { useSocketContext } from "../../hooks/useSocketContext";
+import { useAuthContext } from "../../context/AuthContext";
 
 const Messages = () => {
     const { messages, loading } = useGetMessages();
@@ -54,6 +56,8 @@ const Messages = () => {
     const messagesEndRef = useRef(null);
     const [messagesArray, setMessagesArray] = useState([]);
     const {newMessage, setNewMessage} = useNewMsgContext();
+    const { socket } = useSocketContext();
+    const {authUser} = useAuthContext();
 
     // Update messagesArray whenever messages change
     useEffect(() => {
@@ -81,7 +85,22 @@ const Messages = () => {
             messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
         }
     }, [newMessage]);
+    //****** */
+    useEffect(() => {
+        socket.on("getMessage", (message) => {
+            console.log(message);
+            if(authUser.user._id === message.receiverId){
+                messagesArray.push(message);
+                setMessagesArray(messagesArray);
+            }
+        });
 
+        return () => {
+            console.log("get");
+            socket.off("getMessages");
+        }
+    }, [socket]);
+    //****** */
     return (
         <div className='px-4 flex-1 overflow-auto'>
             {!loading && messagesArray.length > 0 && (
