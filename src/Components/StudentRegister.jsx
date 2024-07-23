@@ -89,7 +89,7 @@ function StudentRegister() {
           backgroundPosition: "center",
         }}
       >
-            <main className="flex flex-col w-1/2 items-center py-10 px-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10" >  
+            <main className="flex flex-col xl:w-1/2 items-center py-10 px-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10" >  
                 {/* <div className="w-3/4 flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-lg"> */}
                     <div>
                         <h1 className="text-2xl font-bold text-center py-3 text-black">Registration Form</h1>
