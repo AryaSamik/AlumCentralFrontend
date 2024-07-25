@@ -77,7 +77,7 @@ const AlumniCards = () => {
         />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 border-black lg:grid-cols-5 gap-6 px-10">
-  {alumniStatus === 'loading' && <p>Loading...</p>}
+  {alumniStatus === 'loading' &&<div  className='text-xl text-red-600'> <p>Loading...</p> </div>}
   {alumniStatus === 'succeeded' &&
     filteredAlumni.map((person, index) => (
       <div
