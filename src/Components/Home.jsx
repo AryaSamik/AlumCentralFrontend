@@ -19,11 +19,29 @@ function Home() {
     inspired by those who have been in your shoes."      </div>
 
     
-    <div className="button_list mt-3">
-        <button className='bg-blue-300 p-7  font-bold rounded-xl  text-black'><Link to="/StudentList">AlumniList</Link></button>
-        {(authUser || authAdmin) ? <></> : <button className='bg-blue-300 p-7   rounded-xl font-bold text-black'><Link to='/StudentRegister'>Click Here to Create Your Profile</Link></button>}
-      </div>
-      <CustomSlider/>
+    <div className="button_list mt-3 flex flex-col items-center space-y-3 lg:flex-row lg:items-start lg:space-x-3 lg:space-y-0">
+  <button className='bg-blue-500 text-white font-bold py-6 px-7 text-xl rounded-full relative overflow-hidden group'>
+    <Link to="/StudentList" className='block relative z-10'>
+      AlumniList
+    </Link>
+    <span className='absolute inset-0 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition duration-500 ease-out animate-pulse'></span>
+  </button>
+  
+  {/* Conditionally render the second button based on authentication */}
+  {!authUser && !authAdmin && (
+    <button className='bg-blue-300 p-7 rounded-xl font-bold text-black'>
+      <Link to='/StudentRegister'>Click Here to Create Your Profile</Link>
+    </button>
+  )}
+</div>
+
+      <div className="bg-gray-100 p-8  rounded-lg shadow-lg">
+      <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">
+        Notable Alumni
+      </h2>
+      <CustomSlider />
+    </div>
+      
       <Foot/>
      </div>
     

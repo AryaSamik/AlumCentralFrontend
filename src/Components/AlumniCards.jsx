@@ -46,7 +46,7 @@ const AlumniCards = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="mb-4">
+      <div className="mb-4 mt-20">
         <input
           type="text"
           placeholder="Search by name"
@@ -77,60 +77,64 @@ const AlumniCards = () => {
         />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 border-black lg:grid-cols-5 gap-6 px-10">
-        {alumniStatus === 'loading' && <p>Loading...</p>}
-        {alumniStatus === 'succeeded' &&
-          filteredAlumni.map((person, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-md border-2 border-black rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
-            >
-              <img
-                src={getTransformedImageUrl(person.image)}
-                alt={person.name}
-                className="w-full h-auto object-cover rounded-t-lg"
-                style={{ maxHeight: '500px' }} 
-                loading='lazy'
-              />
-              <div className="p-4 relative">
-                <h5 className="text-xl font-bold">{person.name}</h5>
-                {person.designation && person.company && (
-                  <>
-                    <p className="text-gray-700">
-                      {person.designation} at {person.company}
-                    </p>
-                    <p className="text-gray-700">{person.branch}</p>
-                    <p className="text-gray-700 text-sm">
-                      Admission Year: {person.admissionYear}
-                    </p>
-                    <p className="text-gray-700 text-sm">
-                      Graduation Year: {person.graduationYear}
-                    </p>
-                    <p className="text-gray-600">{person.tools}</p>
-                  </>
-                )}
-                {!person.designation && !person.company && (
-                  <>
-                    <p className="text-gray-700">{person.branch}</p>
-                    <p className="text-gray-700 text-sm">
-                      Admission Year: {person.admissionYear}
-                    </p>
-                    <p className="text-gray-700 text-sm">
-                      Graduation Year: {person.graduationYear}
-                    </p>
-                    <p className="text-gray-600">{person.tools}</p>
-                  </>
-                )}
-                <p className="text-gray-600">{person.message}</p>
-              </div>
-              {
-                (authUser) ?
-                <div className=' flex justify-center absolute bottom-0.5 right-0.5   ' style={{display: ((authUser) && (authUser.user._id === person._id))?'none':'block'}}>
-                  <AlumConnectionButton person={person}/>
-                </div> : <></>
-              }
-            </div>
-          ))}
+  {alumniStatus === 'loading' &&<div  className='text-xl text-red-600'> <p>Loading...</p> </div>}
+  {alumniStatus === 'succeeded' &&
+    filteredAlumni.map((person, index) => (
+      <div
+        key={index}
+        className="bg-white shadow-md border-2 border-black rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 flex flex-col justify-between"
+      >
+        <img
+          src={getTransformedImageUrl(person.image)}
+          alt={person.name}
+          className="w-full h-auto object-cover rounded-t-lg"
+          style={{ maxHeight: '500px' }}
+          loading='lazy'
+        />
+        <div className="p-4">
+          <h5 className="text-xl font-bold">{person.name}</h5>
+          {person.designation && person.company && (
+            <>
+              <p className="text-gray-700">
+                {person.designation} at {person.company}
+              </p>
+              <p className="text-gray-700">{person.branch}</p>
+              <p className="text-gray-700 text-sm">
+                Admission Year: {person.admissionYear}
+              </p>
+              <p className="text-gray-700 text-sm">
+                Graduation Year: {person.graduationYear}
+              </p>
+              <p className="text-gray-600">{person.tools}</p>
+            </>
+          )}
+          {!person.designation && !person.company && (
+            <>
+              <p className="text-gray-700">{person.branch}</p>
+              <p className="text-gray-700 text-sm">
+                Admission Year: {person.admissionYear}
+              </p>
+              <p className="text-gray-700 text-sm">
+                Graduation Year: {person.graduationYear}
+              </p>
+              <p className="text-gray-600">{person.tools}</p>
+            </>
+          )}
+          <p className="text-gray-600">{person.message}</p>
+        </div>
+        <div className='flex justify-center p-4'>
+          {authUser ? (
+            authUser.user._id !== person._id ? (
+              <AlumConnectionButton person={person} />
+            ) : null 
+          ) : (
+            <AlumConnectionButton person={person} />
+          )}
+        </div>
       </div>
+    ))}
+</div>
+
     </div>
   );
 };

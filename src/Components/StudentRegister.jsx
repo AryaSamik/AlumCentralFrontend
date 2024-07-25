@@ -81,7 +81,7 @@ function StudentRegister() {
         <>
             <Navbar />
             <div
-        className="min-h-screen  flex flex-col items-center justify-center"
+        className=" w-full flex flex-col items-center justify-center"
         style={{
           background: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/bit_right_pov.jpeg')",
           backgroundRepeat: "no-repeat",
@@ -89,7 +89,7 @@ function StudentRegister() {
           backgroundPosition: "center",
         }}
       >
-            <main className="flex flex-col items-center py-10 px-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10" style={{height:'100vh', overflowY:'auto'}}>
+            <main className="flex flex-col xl:w-1/2 items-center py-10 px-10 shadow-md bg-gray-100 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10" >  
                 {/* <div className="w-3/4 flex flex-col justify-center items-center bg-white p-6 rounded-lg shadow-lg"> */}
                     <div>
                         <h1 className="text-2xl font-bold text-center py-3 text-black">Registration Form</h1>

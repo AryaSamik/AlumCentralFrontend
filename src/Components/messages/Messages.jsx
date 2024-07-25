@@ -46,12 +46,18 @@ import useGetMessages from "../../hooks/useGetMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
+import { useNewMsgContext } from "../../context/NewMsgContext";
+import { useSocketContext } from "../../hooks/useSocketContext";
+import { useAuthContext } from "../../context/AuthContext";
 
 const Messages = () => {
     const { messages, loading } = useGetMessages();
     useListenMessages();
     const messagesEndRef = useRef(null);
     const [messagesArray, setMessagesArray] = useState([]);
+    const {newMessage, setNewMessage} = useNewMsgContext();
+    const { socket } = useSocketContext();
+    const {authUser} = useAuthContext();
 
     // Update messagesArray whenever messages change
     useEffect(() => {
@@ -69,6 +75,32 @@ const Messages = () => {
         }
     }, [messagesArray]);
 
+    useEffect(() => {
+        if(newMessage){
+            // messagesArray.push(newMessage);
+            setMessagesArray((prev) => [...prev, newMessage]);
+            setNewMessage(null);
+        }
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [newMessage]);
+    //****** */
+    useEffect(() => {
+        socket.on("getMessage", (message) => {
+            console.log(message);
+            if(authUser.user._id === message.receiverId){
+                // messagesArray.push(message);
+                setMessagesArray((prev) => [...prev, message]);
+            }
+        });
+
+        return () => {
+            console.log("get");
+            socket.off("getMessage");
+        }
+    }, [socket, authUser.user._id]);
+    //****** */
     return (
         <div className='px-4 flex-1 overflow-auto'>
             {!loading && messagesArray.length > 0 && (
