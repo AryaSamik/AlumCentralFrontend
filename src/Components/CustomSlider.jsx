@@ -10,6 +10,8 @@ function CustomSlider() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: true,        // Enable autoplay
+    autoplaySpeed: 1000,   // Autoplay speed in milliseconds (e.g., 3000 = 3 seconds)
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
@@ -61,13 +63,12 @@ function CustomSlider() {
 
   return (
     <div className='w-3/4 m-auto relative pb-10'>
-      <div className='mt-20 '>
+      <div className='mt-20'>
         <Slider {...settings}>
-          {/* Mapping data as before */}
           {data.map((d) => (
             <div key={d.name} className='bg-white h-[450px] px-5 pb-7 text-black rounded-xl mx-4'>
               <div className='h-56 bg-indigo-500 flex justify-center items-center rounded-t-xl'>
-                <img src={d.img} alt={d.name} className='h-44 w-44 rounded-full' />
+                <img src={d.img} alt={d.name} className='h-44 w-44 rounded-full' loading='lazy' />
               </div>
               <div className='flex flex-col items-center justify-center gap-4 p-4'>
                 <p className='text-xl font-semibold'>{d.name}</p>
@@ -81,7 +82,6 @@ function CustomSlider() {
     </div>
   );
 }
-
 const data = [
   
   {
