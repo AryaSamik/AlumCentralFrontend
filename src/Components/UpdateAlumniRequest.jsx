@@ -15,7 +15,18 @@ function UpdateAlumniRequest() {
     }, [status, dispatch]);
 
     const handleSave = (alumnusId) => {
-        dispatch(verifyAlumnus(alumnusId));
+        dispatch(verifyAlumnus(alumnusId))
+        .then((res) => {
+            if(res.payload.message !== undefined){
+                alert(res.payload.message);
+                return;
+            }
+            alert("Alumni Saved");
+        })
+        .catch((error)=>{
+            console.log(error);
+            alert("Some error occured");
+        });
     };
 
     const handleDelete = (alumnusId) => {
