@@ -37,7 +37,6 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    console.log(inputdata);
     try {
       axios.defaults.withCredentials = true;
       const response = await axios.post('https://alumcentralbackend-1.onrender.com/admin/login', inputdata);
