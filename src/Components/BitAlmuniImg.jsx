@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './BitAlmuniImg.css';
 import BuildingImg from '../images/Building.jpg';
-import Bg_pc from '../images/bg_pic1.jpg';
 import AlumCentralImg from '../images/logo.png';
 
 function BitAlmuniImg() {
@@ -15,29 +14,34 @@ function BitAlmuniImg() {
 
   return (
     <>
-<div className="w-screen flex justify-center bg-slate-400">
+<div className="w-screen flex justify-center ">
   {showContent && (
     <div id="content-container" className="relative w-full">
       {/* Image Container */}
-      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[600px] flex justify-center items-center overflow-hidden">
+      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[400px] flex justify-center items-center overflow-hidden">
         <img 
           src={BuildingImg} 
           alt="Bit Mesra Building" 
           id="university-image" 
           className="w-full h-full object-cover opacity-60" // Adjust the opacity here
         />
-        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center">
-          <div>
-            <h3 className="animate__animated animate__backInLeft animate__delay-1s text-red-600 text-lg md:text-2xl">
-              Welcome To👋
-            </h3>
-          </div>
-          <div>
-            <h2 className="animate__animated animate__flipInX animate__delay-2s text-red-600 text-xl md:text-3xl lg:text-4xl">
-              Bit Mesra's Alumcentral
-            </h2>
-          </div>
-        </div>
+       <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center">
+  <div>
+    <h3 className="animate__animated animate__backInLeft animate__delay-1s text-lg md:text-2xl">
+      <span className="text-pink-500 p-2 rounded-md" style={{color: 'rgba(255, 0, 128, 0.8)'}}>
+        Welcome To👋
+      </span>
+    </h3>
+  </div>
+  <div className="mt-4"> {/* Add margin-top for gap */}
+    <h2 className="animate__animated animate__flipInX animate__delay-2s text-xl md:text-3xl lg:text-4xl">
+      <span className="text-yellow-500 p-2 rounded-md" style={{color: 'rgba(0, 128, 255, 0.8)'}}>
+        Bit Mesra's Alumcentral
+      </span>
+    </h2>
+  </div>
+</div>
+
       </div>
     </div>
   )}
