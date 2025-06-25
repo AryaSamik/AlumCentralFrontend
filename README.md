@@ -5,3 +5,4 @@
 - [Arya Samik](https://github.com/AryaSamik)
 
 ## Backend repository [here](https://github.com/AryaSamik/AlumCentralBackend)
+## Socket repository [here](https://github.com/AryaSamik/AlumCentralSocket)
